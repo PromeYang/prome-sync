@@ -41,11 +41,15 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 
 * Mac -- brew install -v4.2.4 node (建议使用 (Brew)[http://brew.sh/index_zh-cn.html] 安装)
 
-2.Yeoman环境：npm install -g yo
+2.Yeoman 环境：npm install -g yo
 
 3.Gulp 环境：npm install -g gulp
 
-4.获取脚手架
+4.Nginx 环境：
+
+* Win -- 
+
+5.获取脚手架
 
 ### 脚手架初始化项目
 
