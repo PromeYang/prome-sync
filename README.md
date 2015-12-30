@@ -36,21 +36,24 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 ### 安装开发环境
 
 1.(Node 环境)[https://nodejs.org/]：选择合适自己的方式进行安装(小草同学用的是v4.2.4)
-  Win64 -- (https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi)[https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi]
-  Mac -- brew install -v4.2.4 node (建议使用 (Brew)[http://brew.sh/index_zh-cn.html] 安装)
-  
+
+Win64 -- (https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi)[https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi]
+
+Mac -- brew install -v4.2.4 node (建议使用 (Brew)[http://brew.sh/index_zh-cn.html] 安装)
+
 2.Yeoman环境：npm install -g yo
 
 3.Gulp 环境：npm install -g gulp
 
-4.Subversion Command-Line : 
+4.获取脚手架
 
-  Win -- (下载地址)[http://pan.baidu.com/s/1gdrQ7Px]
-  Mac -- 系统自带
-5.获取脚手架
 ### 脚手架初始化项目
+
 在空目录执行 yo prome 初始化项目
+
 项目初始化之后的文件结构 -- 基础模板
+
 项目初始化之后的文件结构 -- APICloud模板
+
 ### 开始使用
 
