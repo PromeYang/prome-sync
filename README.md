@@ -47,7 +47,7 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 
 4.Nginx 环境：
 
-* Win -- 
+* Win -- (http://nginx.org/download/nginx-1.8.0.zip)[http://nginx.org/download/nginx-1.8.0.zip]
 
 5.获取脚手架
 
