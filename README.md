@@ -35,13 +35,11 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 
 ### 安装开发环境
 
-1.(Node 环境)[https://nodejs.org/]
+1.[Node 环境](https://nodejs.org/) : 选择合适自己的方式进行安装(小草同学用的是v4.2.4)
 
-选择合适自己的方式进行安装(小草同学用的是v4.2.4)
+* Win64 -- [https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi](https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi)
 
-* Win64 -- (https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi)[https://nodejs.org/dist/v4.2.4/node-v4.2.4-x64.msi]
-
-* Mac -- brew install -v4.2.4 node (建议使用 (Brew)[http://brew.sh/index_zh-cn.html] 安装)
+* Mac -- brew install -v4.2.4 node (建议使用 [Brew](http://brew.sh/index_zh-cn.html) 安装)
 
 2.Yeoman 环境：npm install -g yo
 
@@ -49,7 +47,52 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 
 4.Nginx 环境：
 
-* Win -- (http://nginx.org/download/nginx-1.8.0.zip)[http://nginx.org/download/nginx-1.8.0.zip]
+* Win -- [http://nginx.org/download/nginx-1.8.0.zip](http://nginx.org/download/nginx-1.8.0.zip)
+
+```
+解压之后为了方便使用,可以配置到系统全局的Path变量中,配置后可以直接在命令行使用相关命令
+
+a.复制解压之后的文件目录路径,如:(C:\Users\PromeYang\Downloads\nginx-1.8.0)
+
+b.我的电脑 -> 属性 -> 高级 -> 环境变量，编辑<系统变量> - Path
+
+c.在变量值输入框的最后面<输入> `;` ,然后<粘贴>步骤1复制的路径,一直按<确定>保存修改
+
+配置完成后,可以同时按下 win+r ,输入 cmd 启动命令行工具, 现在已经可以直接使用以下常用命令
+```
+
+* Mac -- [http://nginx.org/download/nginx-1.8.0.tar.gz](http://nginx.org/download/nginx-1.8.0.tar.gz)
+
+```
+$ cd <下载安装包的文件目录路径>
+$ tar xvzf nginx-1.8.0.tar.gz
+$ cd nginx-1.8.0
+$ sudo ./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-cc-opt="-Wno-deprecated-declarations"
+$ sudo make
+$ sudo make install
+
+编译完成后,添加到环境变量中
+$ vim ~/.bashrc
+export PATH="/usr/local/nginx/sbin:$PATH"
+保存修改之后,让以上配置生效
+$ source ~/.bash_profile
+```
+
+* 配置成功后, 启动命令行工具, 现在已经可以直接使用以下常用命令
+
+```
+nginx -v -- 查看Nginx版本,确定是否配置成功
+
+nginx -c <配置文件路径> -- 用于启动指定配置文件的nginx服务(win系统不能使用默认的方式,会报找不到相关路径的报错)
+
+nginx -s stop -- 不保存相关信息直接停止nginx服务
+
+nginx -s quit -- 保存相关信息,完整有序的停止nginx服务
+
+nginx -s reload -- 当配置信息修改，需要重新载入这些配置时使用此命令。
+```
+
+*注意 : Mac本如果编译报错找不到 PCRE, 请到[官网下载安装](http://www.pcre.org/)*
 
 5.获取脚手架
 
@@ -62,4 +105,6 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
 * 项目初始化之后的文件结构 -- APICloud模板
 
 ### 开始使用
+
+C:\Program Files (x86)\Parallels\Parallels Tools\Applications;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\
 
