@@ -1,0 +1,33 @@
+{
+    "name": "generator-sync",
+    "version": "1.0.0",
+    "description": "a good gulp generator tool for Hybrid App ",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:PromeYang/prome-sync.git"
+    },
+    "homepage": "https://github.com/PromeYang/prome-sync/",
+    "bugs": {
+        "url": "https://github.com/PromeYang/prome-sync/issues"
+    },
+    "main": "app/index.js",
+    "scripts": {
+        "postinstall": "node scripts/post-install.js",
+        "uninstall": "node scripts/uninstall.js"
+    },
+    "dependencies": {
+        "yeoman-generator": "~0.17.6",
+        "del": "~0.1.3"
+    },
+    "devDependencies": {},
+    "readmeFilename": "README.md",
+    "author": "promeyang",
+    "keywords": [
+        "yeoman-generator",
+        "f2e",
+        "workflow",
+        "gulp",
+        "hybrid"
+    ]
+}

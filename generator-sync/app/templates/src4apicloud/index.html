@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>Hello APP</title>
+</head>
+
+<body>
+    <!-- code here -->
+    <script>
+    apiready = function() {
+
+        api.clearCache();
+        api.removeLaunchView();
+        api.actionSheet({
+            title: '选择测试环境',
+            buttons: ['家里:192.168.199.100', '公司:172.26.86.200', '铂涛:10.30.22.200']
+        }, function(ret, err) {
+            var url = '';
+            if (ret.buttonIndex == 1) {
+                url = 'http://192.168.199.100:8001/index.html';
+            } else if (ret.buttonIndex == 2) {
+                url = 'http://172.26.86.200:8001/index.html';
+            } else if (ret.buttonIndex == 3) {
+                url = 'http://10.30.22.200:8001/index.html';
+            }
+
+            api.openWin({
+                name: 'main-test',
+                url: url,
+                slidBackEnabled: false
+            })
+        });
+        return false;
+        // 以上内容测试
+
+    };
+    </script>
+</body>
+</html>
