@@ -29,7 +29,7 @@ prome-sync是适合任何基于webview进行混合式开发的开发工作流,�
  
 * 自动补全CSS3浏览器前缀
 
-**定向监听指定页面,匹配文件的变化并自动刷新该浏览器(webview)
+* **定向监听指定页面, 匹配文件的变化并自动刷新该浏览器(webview)**
 
 ## prome-sync怎么使用?
 
@@ -96,17 +96,101 @@ nginx -s reload -- 当配置信息修改，需要重新载入这些配置时使�
 
 5.获取脚手架
 
+```
+npm install -g generator-sync
+```
 
+*如果是直接从 `github` 上克隆的, 进入克隆目录*
+
+```
+$ cd generator-sync
+$ npm link
+```
 
 ### 脚手架初始化项目
 
-* 在空目录执行 yo prome 初始化项目
+* 在空目录执行 `yo sync` 初始化项目
 
-* 项目初始化之后的文件结构 -- 基础模板
+* 项目初始化之后的文件结构 -- h5模板
 
+```
+yourProj/
+│
+├── package.json                // 项目依赖定义
+├── gulp.js                     // gulp配置任务入口
+├── prome-sync                  // 启动服务脚本
+├── tasks/ 						// gulp任务流，开发等
+├── conf/ 						// nginx配置
+│
+├── node_modules    			// `npm install` 拉取依赖包
+│
+└── src/                        // 开发目录
+     ├── css/
+     ├── sass/
+     ├── img/
+     ├── js/
+     └── index.html
+            
+```
 * 项目初始化之后的文件结构 -- APICloud模板
+
+```
+yourProj/
+│
+├── package.json                // 项目依赖定义
+├── gulp.js                     // gulp配置任务入口
+├── prome-sync                  // 启动服务脚本
+├── tasks/ 						// gulp任务流，开发等
+├── conf/ 						// nginx配置
+│
+├── node_modules    			// `npm install` 拉取依赖包
+│
+└── src/                        // 开发目录
+     ├── css/
+     ├── feature/
+     ├── html/
+     ├── icon/
+     ├── image/
+     ├── launch/
+     ├── res/
+     ├── sass/
+     ├── script/
+     ├── wgt/
+     └── index.html
+```
 
 ### 开始使用
 
-C:\Program Files (x86)\Parallels\Parallels Tools\Applications;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\
+* 如果是初始化项目, 在执行完 `yo sync` 命令之后, 会弹出一个新的命令行终端
+
+* 如果是再次启动项目, 在命令行终端进入到当前项目的目录, 执行 `gulp` 命令, 弹出终端
+
+* 在终端输入以下命令, 根据指示完成操作
+
+```
+$ ./prome-sync
+>> 请输入IP地址:
+>> 127.0.0.1(手动输入当前IP)
+>> 请输入查看端口号:(默认3377)
+>> 3377(直接回车默认3377端口)
+>> 启动nginx需要权限:
+>> ******
+>> 所有服务成功开启,现在可以 coding...
+```
+
+* 访问 `webserver` 进行开发, 如 : `127.0.0.1:3377` 
+
+* 需要定向监听页面时, 访问的路径加上参数 `mod=dev` 如 : `127.0.0.1:3377/index.html?mod=dev` , 可同时监听多个页面
+
+### 案例展示
+
+### 更新日志
+
+* 1.0.0 -- 初始化版本
+* 1.1.0 -- 同时开启多个监听服务, 精心编写的执行脚本, 最精简的命令
+
+### License
+
+Released under [MIT](http://rem.mit-license.org/) LICENSE
+
 
