@@ -2,9 +2,13 @@ module.exports = function(gulp, plugins) {
 
     var argv = require('yargs').argv,
         chalk = require('chalk'),
-        browserSync = require('browser-sync'),
+        browserSync = require('prome-sync'),
         reload = browserSync.reload,
+        spawn = require('child_process').spawn,
         log = console.log;
+    
+    var bs1 = browserSync.create('Server 1');
+    var bs2 = browserSync.create('Server 2');
     
     var win32 = process.platform === 'win32';
 
@@ -13,7 +17,10 @@ module.exports = function(gulp, plugins) {
     var pkg = require('../package.json');
     
     gulp.task('dev_conn', function() {
-        browserSync({
+        
+        var newTerminal = spawn('open', ['-a', 'Terminal', '.']);
+
+        bs1.init({
             ui:false,
             server: {
                 baseDir: "src",
@@ -21,17 +28,31 @@ module.exports = function(gulp, plugins) {
             },
             notify: false,
             ghostMode:false,
-            port: that.port,
+            port: 3388||that.port,
             open: "external",
             browser: "/Applications/Google\ Chrome.app/"
-        },function(err, arg){
-            if (argv.q) {
-                var url = arg.options.get('urls').get('external')
-                var qrcode = require('qrcode-terminal')
-                qrcode.generate(url);
-            }
-
+        }, function(err,bs){
+            // log(bs.options)
+            // if (argv.q) {
+            //     var url = arg.options.get('urls').get('external')
+            //     var qrcode = require('qrcode-terminal')
+            //     qrcode.generate(url);
+            // }
         })
+
+        bs2.init({
+            ui:false,
+            server: {
+                baseDir: "src",
+                directory: true
+            },
+            notify: false,
+            ghostMode:false,
+            port: 3399||that.port,
+            open: false,
+            browser: "/Applications/Google\ Chrome.app/"
+        })
+
     })
     gulp.task('dev_sass', function() {
         function sassCompile(){

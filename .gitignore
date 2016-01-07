@@ -1,0 +1,8 @@
+.DS_Store
+.svn
+.idea
+.yo-rc.json
+node_modules
+prome-sync
+
+README_ignore.md
