@@ -73,15 +73,15 @@ module.exports = function(gulp, plugins) {
             .pipe(plugins.autoprefixer( {browsers: ['> 0%']} ))
             .pipe(plugins.sourcemaps.write({includeContent: false, sourceRoot: '../sass/'}))
             .pipe(gulp.dest('src/css'))
-            .pipe(reload({stream:true}))
+            .pipe(bs1.reload({stream:true}))
     })
 
     gulp.task('default', ['dev_conn'], function(){
         gulp.watch('src/sass/**', ['dev_sass'])
-        gulp.watch('src/image/**', reload)
-        gulp.watch('src/script/**', reload)
-        gulp.watch('src/html/*.html', reload)
-        gulp.watch('src/index.html', reload)
+        gulp.watch('src/image/**', bs1.reload)
+        gulp.watch('src/script/**', bs1.reload)
+        gulp.watch('src/html/*.html', bs1.reload)
+        gulp.watch('src/index.html', bs1.reload)
     })
 
 }
