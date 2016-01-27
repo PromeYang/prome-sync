@@ -29,7 +29,8 @@ module.exports = function(gulp, plugins) {
             notify: false,
             ghostMode:false,
             port: 3388||that.port,
-            open: "external",
+            // open: "external",
+            open: false,
             browser: "/Applications/Google\ Chrome.app/"
         }, function(err,bs){
             // log(bs.options)
