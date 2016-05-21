@@ -1,6 +1,6 @@
 {
     "name": "generator-sync",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "a good gulp generator tool for Hybrid App ",
     "license": "MIT",
     "repository": {

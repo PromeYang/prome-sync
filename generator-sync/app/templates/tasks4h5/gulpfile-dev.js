@@ -4,9 +4,10 @@ module.exports = function(gulp, plugins) {
         chalk = require('chalk'),
         browserSync = require('prome-sync'),
         reload = browserSync.reload,
+        childProcess = require('child_process'),
         spawn = require('child_process').spawn,
         log = console.log;
-
+    
     var bs1 = browserSync.create('Server 1');
     var bs2 = browserSync.create('Server 2');
     
@@ -15,11 +16,21 @@ module.exports = function(gulp, plugins) {
     var that = this;
     that.port = +argv.p || 3000;
     var pkg = require('../package.json');
-
+    
     gulp.task('dev_conn', function() {
         
-        var newTerminal = spawn('open', ['-a', 'Terminal', '.']);
-
+        if(win32) {
+            childProcess.exec('start C:\\Windows\\System32\\cmd.exe', function(error, stdout, stderr){ 
+                if ( !error ) {
+                    console.log(stdout);
+                } else {
+                    console.log(error);
+                }
+            });
+        } else {
+            var newTerminal = spawn('open', ['-a', 'Terminal', '.']);
+        }
+        
         bs1.init({
             ui:false,
             server: {
@@ -79,9 +90,10 @@ module.exports = function(gulp, plugins) {
 
     gulp.task('default', ['dev_conn'], function(){
         gulp.watch('src/sass/**', ['dev_sass'])
-        gulp.watch('src/img/**', bs1.reload)
-        gulp.watch('src/js/**', bs1.reload)
-        gulp.watch('src/*.html', bs1.reload)
+        gulp.watch('src/image/**', bs1.reload)
+        gulp.watch('src/script/**', bs1.reload)
+        gulp.watch('src/html/*.html', bs1.reload)
+        gulp.watch('src/index.html', bs1.reload)
     })
 
 }

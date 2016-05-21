@@ -4,6 +4,7 @@ module.exports = function(gulp, plugins) {
         chalk = require('chalk'),
         browserSync = require('prome-sync'),
         reload = browserSync.reload,
+        childProcess = require('child_process'),
         spawn = require('child_process').spawn,
         log = console.log;
     
@@ -18,8 +19,18 @@ module.exports = function(gulp, plugins) {
     
     gulp.task('dev_conn', function() {
         
-        var newTerminal = spawn('open', ['-a', 'Terminal', '.']);
-
+        if(win32) {
+            childProcess.exec('start C:\\Windows\\System32\\cmd.exe', function(error, stdout, stderr){ 
+                if ( !error ) {
+                    console.log(stdout);
+                } else {
+                    console.log(error);
+                }
+            });
+        } else {
+            var newTerminal = spawn('open', ['-a', 'Terminal', '.']);
+        }
+        
         bs1.init({
             ui:false,
             server: {
