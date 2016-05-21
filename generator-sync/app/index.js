@@ -80,6 +80,7 @@ var SyncGenerator = yeoman.Base.extend({
 		this.directory('src4'+this.projectAssets, 'src')
 		this.directory('conf', 'conf')
 		this.copy('prome-sync', 'prome-sync')
+		this.copy('prome-sync.bat', 'prome-sync.bat')
 		this.copy('gulpfile.js', 'gulpfile.js')
 		this.pkgGulpSassVersion = (win32?'1.3.3':'~2.0.1')
 		this.copy('package.json', 'package.json')
