@@ -1,0 +1,61 @@
+#!/bin/sh
+
+basepath=$(cd `dirname $0`; pwd)
+confpath=$basepath'/conf/nginx.promesync.conf'
+temppath=$basepath'/conf/temp.promesync.conf'
+savepath=$basepath'/conf/save'
+ip=127.0.0.1
+port=3377
+port1=3388
+port2=3399
+
+echo $(ls conf) | grep -q "temp\.promesync\.conf"
+test $? -eq 0 && rm -f $temppath;cp -f $confpath $temppath || cp -f $confpath $temppath
+
+function inputIP(){
+	read -p '请输入IP地址:'
+	if [[ $REPLY =~ ^([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]{1,2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$ ]]
+	then
+	    ip=$REPLY
+	    setIP
+	    read -p '请输入查看端口号:(默认3377)'
+	    if [ -z "$REPLY" ]; then
+	    	port=3377
+	    else
+	    	port=$REPLY
+	    fi
+	    setPort
+	else
+	    echo "ip地址不正确"
+	    inputIP
+	fi
+}
+
+function setIP(){
+	sed 's/{{ip}}/'$ip'/g' $temppath > $savepath
+	rm -f $temppath
+	cp -f $savepath $temppath
+}
+
+function setPort(){
+	sed 's/{{port}}/'$port'/g' $temppath > $savepath
+	rm -f $temppath
+	cp -f $savepath $temppath
+	sed 's/{{port1}}/'$port1'/g' $temppath > $savepath
+	rm -f $temppath
+	cp -f $savepath $temppath
+	sed 's/{{port2}}/'$port2'/g' $temppath > $savepath
+	rm -f $temppath
+	cp -f $savepath $temppath
+	startNginx
+}
+
+function startNginx(){
+	echo "启动nginx需要权限:"
+	rm -f $savepath
+	sudo nginx -s stop
+	sudo nginx -c $temppath
+	echo "所有服务成功开启,现在可以 coding..."
+}
+
+inputIP
