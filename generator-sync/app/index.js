@@ -16,17 +16,17 @@ var cfgRoot =  path.join(homeDir, '.generator-sync')
 var libPath = path.join(cfgRoot, 'node_modules')
 
 var SyncGenerator = yeoman.Base.extend({
-	
+
 	// 1. 提问前的准备工作
 	constructor: function (){
 		yeoman.Base.apply(this, arguments)
-		this.conflicter.force = true	
+		this.conflicter.force = true
 
 		// 初始环境检测
 		// 若当前目录没有node_modules文件夹，则建立软连接；否则继续
 		// 若当前存在src文件夹，则退出；否则继续
 		var dirs = glob.sync('+(src|node_modules)')
-		if(!_.contains(dirs, 'node_modules')){
+		if(!_.includes(dirs, 'node_modules')){
 			if(win32){
 				require('child_process').exec('mklink /d .\\node_modules '+ libPath )
 			}else{
@@ -34,7 +34,7 @@ var SyncGenerator = yeoman.Base.extend({
 			}
 			log(chalk.bold.green('node_modules 软连接创建完毕!'))
 		}
-		if(_.contains(dirs, 'src')){
+		if(_.includes(dirs, 'src')){
 			log(chalk.bold.green('资源已初始化，退出...'))
 			setTimeout(function(){
 				process.exit(1)
@@ -90,7 +90,7 @@ var SyncGenerator = yeoman.Base.extend({
 	end: function(){
 		// 文件转移后，删除不需要的文件
 		del(['src/**/.gitignore','src/**/.npmignore', 'src/README.md'])
-		
+
 		// 安装包依赖，然后执行`gulp`
 		// https://github.com/yeoman/generator/blob/45258c0a48edfb917ecf915e842b091a26d17f3e/lib/actions/install.js#L67-69
 	    this.installDependencies({
