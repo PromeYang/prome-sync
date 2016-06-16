@@ -1,0 +1,28 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.7.5
+3 info using node@v0.12.2
+4 verbose node symlink /usr/local/bin/node
+5 verbose publish [ '.' ]
+6 silly cache add args [ '.', null ]
+7 verbose cache add spec .
+8 silly cache add parsed spec { raw: '.',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: '.',
+8 silly cache add   spec: '/Users/PromeYang/gitlab/github/prome-sync/generator-sync/scripts',
+8 silly cache add   type: 'local' }
+9 error addLocal Could not install /Users/PromeYang/gitlab/github/prome-sync/generator-sync/scripts
+10 verbose stack Error: EISDIR, read
+10 verbose stack     at Error (native)
+11 verbose cwd /Users/PromeYang/gitlab/github/prome-sync/generator-sync/scripts
+12 error Darwin 15.4.0
+13 error argv "node" "/usr/local/bin/npm" "publish"
+14 error node v0.12.2
+15 error npm  v2.7.5
+16 error code EISDIR
+17 error errno -21
+18 error EISDIR, read
+19 error If you need help, you may report this error at:
+19 error     <https://github.com/npm/npm/issues>
+20 verbose exit [ -21, true ]

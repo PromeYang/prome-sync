@@ -1,9 +1,9 @@
 "use strict";
 var yeoman = require('yeoman-generator'),
-	glob = require('node-glob'),
-	_ = require('lodash'),
-	chalk = require('chalk'),
-	mkdirp = require('mkdirp'),
+	glob = require('yeoman-generator/node_modules/glob'),
+	_ = require('yeoman-generator/node_modules/lodash'),
+	chalk = require('yeoman-generator/node_modules/chalk'),
+	mkdirp = require('yeoman-generator/node_modules/mkdirp'),
 	path = require('path'),
 	exec = require('child_process').exec,
 	fs = require('fs'),
@@ -26,7 +26,7 @@ var SyncGenerator = yeoman.Base.extend({
 		// 若当前目录没有node_modules文件夹，则建立软连接；否则继续
 		// 若当前存在src文件夹，则退出；否则继续
 		var dirs = glob.sync('+(src|node_modules)')
-		if(!_.includes(dirs, 'node_modules')){
+		if(!_.contains(dirs, 'node_modules')){
 			if(win32){
 				require('child_process').exec('mklink /d .\\node_modules '+ libPath )
 			}else{
@@ -34,7 +34,7 @@ var SyncGenerator = yeoman.Base.extend({
 			}
 			log(chalk.bold.green('node_modules 软连接创建完毕!'))
 		}
-		if(_.includes(dirs, 'src')){
+		if(_.contains(dirs, 'src')){
 			log(chalk.bold.green('资源已初始化，退出...'))
 			setTimeout(function(){
 				process.exit(1)

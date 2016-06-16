@@ -76,7 +76,8 @@ module.exports = function(gulp, plugins) {
             }
             return plugins.sass().on('error', handler()) 
         }
-        return gulp.src('src/sass/*.scss')
+        return gulp.src('src/sass/**/*.scss')
+            .pipe(plugins.cached('sass'))
             .pipe(plugins.plumber())
             .pipe(plugins.sourcemaps.init())
             .pipe(sassCompile())
